@@ -1,0 +1,171 @@
+body {
+    background-color: #181818;
+    font-family: "Poppins";
+    font-weight: 300;
+}
+
+body::-webkit-scrollbar {
+    width: 8px;
+}
+
+body::-webkit-scrollbar-track {
+    background: #333;
+    border-radius: 5px;
+}
+
+body::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #ff36a3, #0e9eef);
+    border-radius: 5px;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to bottom, #0e9eef, #ff36a3);
+}
+
+
+/* General Typography and Colors */
+
+.btn-outline-light {
+    border-color: #EE10B0;
+    color: #EE10B0;
+}
+
+.btn-outline-light:hover {
+    background-color: #EE10B0;
+    border-color: #EE10B0;
+    color: white;
+}
+
+.btn-light {
+    background-color: #EE10B0;
+    border-color: #EE10B0;
+    color: white;
+}
+
+.btn-light:hover {
+    background-color: #fc4eca;
+    border-color: #fc4eca;
+    color: white;
+}
+
+.bg-dark-custom {
+    background-color: #181818;
+}
+
+.text-pink {
+    color: #EE10B0;
+}
+
+/* Sidebar */
+.sidebar {
+    border-right: 2px solid #EE10B0;
+    box-shadow: 0 0 15px #EE10B0;
+}
+
+.sidebar h6 {
+    color: #EE10B0;
+    text-transform: uppercase;
+
+}
+
+a.nav-link {
+    color: white;
+    transition: all 1s;
+    padding: 10px;
+}
+
+a.nav-link:hover {
+    background-color: #EE10B0;
+    color: white;
+    padding: 10px 30px;
+}
+
+
+/* Header */
+.bg-header {
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 85%, rgb(0, 0, 0) 100%), url(/public/images/fantasy-dj-illustration.jpg);
+    min-height: 700px;
+    background-size: cover;
+    border-radius: 20px;
+}
+
+a.nav-link-custom {
+    color: white;
+    transition: all 1s;
+    padding: 10px;
+    text-decoration: none;
+}
+
+a.nav-link-custom:hover {
+    color: #EE10B0;
+}
+
+.bg-header h1 {
+    font-size: 70px;
+}
+
+/* Card */
+.card {
+    border: none;
+    text-align: center;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    background-color: #1f1f1f;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-img-top {
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.card-body {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: start;
+}
+
+.card h6 {
+    color: white;
+    text-transform: none;
+
+}
+
+.view-all-btn {
+    background-color: #1f1f1f;
+    color: white;
+    border: none;
+    border-radius: 100%;
+    padding: 10px 20px;
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.view-all-btn .plus {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.text {
+    font-size: 15px;
+    color: white;
+    margin-bottom: 5px;
+}
+
+.view-all-btn:hover {
+    background-color: #333;
+    /* Colore leggermente più chiaro al passaggio del mouse */
+}
