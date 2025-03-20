@@ -22,17 +22,21 @@ class PublicController extends Controller
         return view('index');
     }
 
-    public function search(Request $request)
+    public function contacts()
     {
-        $query = $request->input('query', 'Imagine Dragons');
-        $results = $this->spotifyService->searchTrack($query);
-        return view('spotify.search', compact('results'));
+        return view('contacts');
     }
 
-    public function topTracks()
+    public function create()
     {
-        $tracksData = $this->spotifyService->getTopTracks();
-        return view('top_tracks', compact('tracksData'));
+        return view('spotify.create');
+    }
+
+    public function search(Request $request)
+    {
+        $query = $request->input('query', 'a');
+        $results = $this->spotifyService->searchTrack($query);
+        return view('spotify.search', compact('results'));
     }
 
     public function topPlaylists()
@@ -41,46 +45,16 @@ class PublicController extends Controller
         return view('top_playlists', compact('playlistsData'));
     }
 
-    public function createPlaylist()
+
+
+    public function redirectToSpotify()
     {
-        return view('create_playlist');
-    }
+        $clientId = config('services.spotify.client_id');
+        $redirectUri = urlencode('http://localhost/callback'); // URL di reindirizzamento
+        $scope = 'user-library-read user-read-playback-state user-modify-playback-state'; // I permessi che chiediamo
 
-    public function storePlaylist(Request $request)
-    {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'description' => 'nullable|string',
-            'public' => 'nullable|boolean',
-            'songs' => 'nullable|array',
-            'songs.*.song_name' => 'required_with:songs.*.artist_name|string|max:255',
-            'songs.*.artist_name' => 'required_with:songs.*.song_name|string|max:255',
-        ]);
+        $url = "https://accounts.spotify.com/authorize?client_id={$clientId}&response_type=code&redirect_uri={$redirectUri}&scope={$scope}";
 
-        $playlist = Playlist::create([
-            'name' => $request->name,
-            'description' => $request->description,
-            'public' => $request->public ?? false,
-        ]);
-
-        if ($request->has('songs')) {
-            foreach ($request->songs as $song) {
-                $playlist->songs()->create($song);
-            }
-        }
-
-        return redirect()->route('playlists.index')->with('success', 'Playlist creata con successo!');
-    }
-
-    public function showPlaylists()
-    {
-        $playlists = Playlist::all();
-        return view('playlists', compact('playlists'));
-    }
-
-    public function showPlaylist(Playlist $playlist)
-    {
-        $playlist->load('songs'); // Assicuriamoci che carichi le canzoni associate
-        return view('playlists.show', compact('playlist'));
+        return redirect($url);
     }
 }

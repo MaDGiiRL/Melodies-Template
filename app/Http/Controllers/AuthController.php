@@ -68,26 +68,4 @@ class AuthController extends Controller
         return redirect('/');
     }
 
-
-    // Reindirizza l'utente al login di Spotify
-    public function redirect()
-    {
-        return Socialite::driver('spotify')->scopes(['user-read-email', 'playlist-modify-public', 'playlist-modify-private'])->redirect();
-    }
-
-    // Gestisce il callback di Spotify
-    public function callback()
-    {
-        $spotifyUser = Socialite::driver('spotify')->user();
-
-        // Esempio: puoi salvare i dati nella sessione o nel database
-        session([
-            'spotify_user_id'    => $spotifyUser->getId(),
-            'spotify_user_token' => $spotifyUser->token,
-            'spotify_user_name'  => $spotifyUser->getName(),
-        ]);
-
-        // Reindirizza l'utente alla pagina dove potrà creare la playlist
-        return redirect()->route('playlist.create')->with('success', 'Account Spotify collegato con successo!');
-    }
 }

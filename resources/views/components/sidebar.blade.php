@@ -14,42 +14,35 @@
                     <a href="{{route('index')}}" class="nav-link"><i class="bi bi-house"></i> <span>Home</span></a>
                 </li>
                 <li>
-                    <a href="#" class="nav-link"><i class="bi bi-box-fill"></i> <span>Discover</span></a>
+                    <a href="" class="nav-link"><i class="bi bi-star-fill"></i> <span>Premium</span></a>
                 </li>
                 <li>
-                    <a href="#" class="nav-link"><i class="bi bi-disc"></i> <span>Albums</span></a>
+                    <a href="{{route('contacts')}}" class="nav-link"><i class="bi bi-person-lines-fill"></i> <span>Contacts</span></a>
+                </li>
+                @guest
+                <li>
+                    <a href="{{route('login')}}" class="nav-link"><i class="bi bi-emoji-smile"></i> <span>Login</span></a>
                 </li>
                 <li>
-                    <a href="#" class="nav-link"><i class="bi bi-person-circle"></i> <span>Artists</span></a>
+                    <a href="{{route('register')}}" class="nav-link"><i class="bi bi-emoji-sunglasses"></i> <span>Register</span></a>
                 </li>
+                @endguest
                 <hr>
                 <h6>Library</h6>
                 <li>
-                    <a href="#submenu3-desktop" data-bs-toggle="collapse" class="nav-link"><i class="bi bi-grid"></i> <span>Categories</span></a>
-                    <ul class="collapse nav flex-column ms-1" id="submenu3-desktop" data-bs-parent="#menu">
-                        <li class="w-100"><a href="#" class="nav-link">Product 1</a></li>
-                        <li><a href="#" class="nav-link">Product 2</a></li>
-                        <li><a href="#" class="nav-link">Product 3</a></li>
-                        <li><a href="#" class="nav-link">Product 4</a></li>
-                    </ul>
+                    <a href="{{ url('/spotify/search') }}" class="nav-link"><i class="bi bi-search"></i> <span>Search</span></a>
                 </li>
                 <li>
-                    <a href="#" class="nav-link"><i class="bi bi-clock"></i> <span>Recent Added</span></a>
-                </li>
-                <li>
-                    <a href="#" class="nav-link"><i class="bi bi-search"></i> <span>Search</span></a>
+                    <a href="{{route('top.playlists')}}" class="nav-link"><i class="bi bi-music-note-list"></i> <span>Top Playlists</span></a>
                 </li>
                 @auth
                 <hr>
                 <h6>Playlist</h6>
                 <li>
-                    <a href="{{route('top.tracks')}}" class="nav-link"><i class="bi bi-suit-heart-fill"></i> <span>Top Songs</span></a>
+                    <a href="{{route('spotify.create')}}" class="nav-link"><i class="bi bi-folder-plus"></i> <span>Create Playlist</span></a>
                 </li>
                 <li>
-                    <a href="{{route('top.playlists')}}" class="nav-link"><i class="bi bi-music-note-list"></i> <span>Top Playlists</span></a>
-                </li>
-                <li>
-                    <a href="{{route('create.playlist')}}" class="nav-link"><i class="bi bi-folder-plus"></i> <span>Create Playlist</span></a>
+                    <a href="" class="nav-link"><i class="bi bi-suit-heart-fill"></i> <span>Your Playlists</span></a>
                 </li>
             </ul>
             <hr>
@@ -87,42 +80,35 @@
                 <a href="{{route('index')}}" class="nav-link"><i class="bi bi-house"></i> <span>Home</span></a>
             </li>
             <li>
-                <a href="#" class="nav-link"><i class="bi bi-box-fill"></i> <span>Discover</span></a>
+                <a href="" class="nav-link"><i class="bi bi-star-fill"></i> <span>Premium</span></a>
             </li>
             <li>
-                <a href="#" class="nav-link"><i class="bi bi-disc"></i> <span>Albums</span></a>
+                <a href="{{route('contacts')}}" class="nav-link"><i class="bi bi-person-lines-fill"></i> <span>Contacts</span></a>
+            </li>
+            @guest
+            <li>
+                <a href="{{route('login')}}" class="nav-link"><i class="bi bi-emoji-smile"></i> <span>Login</span></a>
             </li>
             <li>
-                <a href="#" class="nav-link"><i class="bi bi-person-circle"></i> <span>Artists</span></a>
+                <a href="{{route('register')}}" class="nav-link"><i class="bi bi-emoji-sunglasses"></i> <span>Register</span></a>
             </li>
+            @endguest
             <hr>
             <h6>Library</h6>
             <li>
-                <a href="#submenu3-desktop" data-bs-toggle="collapse" class="nav-link"><i class="bi bi-grid"></i> <span>Categories</span></a>
-                <ul class="collapse nav flex-column ms-1" id="submenu3-desktop" data-bs-parent="#menu">
-                    <li class="w-100"><a href="#" class="nav-link">Product 1</a></li>
-                    <li><a href="#" class="nav-link">Product 2</a></li>
-                    <li><a href="#" class="nav-link">Product 3</a></li>
-                    <li><a href="#" class="nav-link">Product 4</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="#" class="nav-link"><i class="bi bi-clock"></i> <span>Recent Added</span></a>
-            </li>
-            <li>
                 <a href="{{ url('/spotify/search') }}" class="nav-link"><i class="bi bi-search"></i> <span>Search</span></a>
+            </li>
+            <li>
+                <a href="{{route('top.playlists')}}" class="nav-link"><i class="bi bi-music-note-list"></i> <span>Top Playlists</span></a>
             </li>
             @auth
             <hr>
             <h6>Playlist</h6>
             <li>
-                <a href="{{route('top.tracks')}}" class="nav-link"><i class="bi bi-suit-heart-fill"></i> <span>Top Songs</span></a>
+                <a href="{{route('spotify.create')}}" class="nav-link"><i class="bi bi-folder-plus"></i> <span>Create Playlist</span></a>
             </li>
             <li>
-                <a href="{{route('top.playlists')}}" class="nav-link"><i class="bi bi-music-note-list"></i> <span>Top Playlists</span></a>
-            </li>
-            <li>
-                <a href="{{route('create.playlist')}}" class="nav-link"><i class="bi bi-folder-plus"></i> <span>Create Playlist</span></a>
+                <a href="" class="nav-link"><i class="bi bi-suit-heart-fill"></i> <span>Your Playlists</span></a>
             </li>
         </ul>
         <hr>
