@@ -43,13 +43,13 @@
                 <hr>
                 <h6>Playlist</h6>
                 <li>
-                    <a href="#" class="nav-link"><i class="bi bi-suit-heart-fill"></i> <span>Your Favorite</span></a>
+                    <a href="{{route('top.tracks')}}" class="nav-link"><i class="bi bi-suit-heart-fill"></i> <span>Top Songs</span></a>
                 </li>
                 <li>
-                    <a href="#" class="nav-link"><i class="bi bi-music-note-list"></i> <span>Your Playlist</span></a>
+                    <a href="{{route('top.playlists')}}" class="nav-link"><i class="bi bi-music-note-list"></i> <span>Top Playlists</span></a>
                 </li>
                 <li>
-                    <a href="#" class="nav-link"><i class="bi bi-folder-plus"></i> <span>Add Playlist</span></a>
+                    <a href="{{route('create.playlist')}}" class="nav-link"><i class="bi bi-folder-plus"></i> <span>Create Playlist</span></a>
                 </li>
             </ul>
             <hr>
@@ -116,13 +116,13 @@
             <hr>
             <h6>Playlist</h6>
             <li>
-                <a href="#" class="nav-link"><i class="bi bi-suit-heart-fill"></i> <span>Your Favorite</span></a>
+                <a href="{{route('top.tracks')}}" class="nav-link"><i class="bi bi-suit-heart-fill"></i> <span>Top Songs</span></a>
             </li>
             <li>
-                <a href="#" class="nav-link"><i class="bi bi-music-note-list"></i> <span>Your Playlist</span></a>
+                <a href="{{route('top.playlists')}}" class="nav-link"><i class="bi bi-music-note-list"></i> <span>Top Playlists</span></a>
             </li>
             <li>
-                <a href="#" class="nav-link"><i class="bi bi-folder-plus"></i> <span>Add Playlist</span></a>
+                <a href="{{route('create.playlist')}}" class="nav-link"><i class="bi bi-folder-plus"></i> <span>Create Playlist</span></a>
             </li>
         </ul>
         <hr>

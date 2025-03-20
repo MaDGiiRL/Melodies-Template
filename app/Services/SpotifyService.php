@@ -10,11 +10,13 @@ class SpotifyService
     protected $clientId;
     protected $clientSecret;
     protected $tokenUrl = 'https://accounts.spotify.com/api/token';
+    protected $token;
 
     public function __construct()
     {
         $this->clientId = config('services.spotify.client_id');
         $this->clientSecret = config('services.spotify.client_secret');
+        $this->token = $this->getAccessToken();
     }
 
     /**
@@ -64,5 +66,51 @@ class SpotifyService
             'type' => 'track',
             'limit' => $limit,
         ]);
+    }
+
+
+    // Metodo per ottenere le top canzoni
+    public function getTopTracks()
+    {
+        $playlistId = 'ID_TOP_TRACKS';
+        $accessToken = $this->getAccessToken(); // Richiedi il token aggiornato
+        $response = Http::withToken($accessToken)
+            ->get("https://api.spotify.com/v1/playlists/{$playlistId}");
+
+        return $response->json();
+    }
+
+    // Metodo per ottenere le top playlist
+    public function getTopPlaylists()
+    {
+        $accessToken = $this->getAccessToken(); // Richiedi il token aggiornato
+        $response = Http::withToken($accessToken)
+            ->get("https://api.spotify.com/v1/search", [
+                'q'     => 'Top',
+                'type'  => 'playlist',
+                'limit' => 10,
+            ]);
+
+        return $response->json();
+    }
+
+    // Metodo per creare una playlist (richiede autorizzazione utente)
+    // Nota: questo esempio è semplificato; per creare una playlist per un utente
+    // dovrai utilizzare il flusso di autorizzazione "Authorization Code" e ottenere un token utente.
+    public function createPlaylist(array $data)
+    {
+        // Supponiamo di avere l'ID utente e un token utente (da gestire tramite OAuth)
+        $userId = $data['user_id'];
+        $userToken = $data['user_token']; // ottenuto dal processo di OAuth
+        $payload = [
+            'name' => $data['name'],
+            'description' => $data['description'] ?? '',
+            'public' => $data['public'] ?? false,
+        ];
+
+        $response = Http::withToken($userToken)
+            ->post("https://api.spotify.com/v1/users/{$userId}/playlists", $payload);
+
+        return $response->json();
     }
 }
