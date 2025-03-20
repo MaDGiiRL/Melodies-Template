@@ -1,9 +1,10 @@
 body {
     background-color: #181818;
-    font-family: "Poppins";
+    font-family: "Poppins", sans-serif;
     font-weight: 300;
 }
 
+/* Scrollbar */
 body::-webkit-scrollbar {
     width: 8px;
 }
@@ -22,30 +23,28 @@ body::-webkit-scrollbar-thumb:hover {
     background: linear-gradient(to bottom, #0e9eef, #ff36a3);
 }
 
-
-/* General Typography and Colors */
-
+/* Colori e bottoni */
 .btn-outline-light {
-    border-color: #EE10B0;
-    color: #EE10B0;
+    border-color: #0E9EEF !important;
+    color: #0E9EEF !important;
 }
 
 .btn-outline-light:hover {
-    background-color: #EE10B0;
-    border-color: #EE10B0;
-    color: white;
+    background-color: #0E9EEF !important;
+    border-color: #0E9EEF !important;
+    color: #fff !important;
 }
 
 .btn-light {
     background-color: #EE10B0;
     border-color: #EE10B0;
-    color: white;
+    color: #fff;
 }
 
 .btn-light:hover {
     background-color: #fc4eca;
     border-color: #fc4eca;
-    color: white;
+    color: #fff;
 }
 
 .bg-dark-custom {
@@ -56,10 +55,50 @@ body::-webkit-scrollbar-thumb:hover {
     color: #EE10B0;
 }
 
-/* Sidebar */
-.sidebar {
+.text-blue {
+    color: #0E9EEF;
+}
+
+
+.sidebar-fixed {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 250px;
     border-right: 2px solid #EE10B0;
     box-shadow: 0 0 15px #EE10B0;
+    z-index: 1030;
+    overflow-y: auto;
+}
+
+.sidebar-fixed .nav-link {
+    color: white;
+    transition: all 0.3s;
+    padding: 10px;
+}
+
+.sidebar-fixed .nav-link:hover {
+    background-color: #EE10B0;
+    color: white;
+    padding-left: 30px;
+}
+
+.sidebar-fixed h6 {
+    color: #EE10B0;
+    text-transform: uppercase;
+    margin-top: 1rem;
+}
+
+
+.offcanvas-bg {
+    background-color: #181818;
+}
+
+@media (min-width: 768px) {
+    .content {
+        margin-left: 250px;
+    }
 }
 
 .sidebar h6 {
@@ -92,7 +131,6 @@ a.nav-link:hover {
 a.nav-link-custom {
     color: white;
     transition: all 1s;
-    padding: 10px;
     text-decoration: none;
 }
 
@@ -102,6 +140,20 @@ a.nav-link-custom:hover {
 
 .bg-header h1 {
     font-size: 70px;
+}
+
+input.form-control {
+    width: 100%;
+    display: inline-block;
+    border-radius: 5px;
+    border: none;
+    background-color: #1f1f1f;
+    border: 1px solid rgb(19, 19, 19);
+    cursor: pointer;
+}
+
+::placeholder {
+    color: rgba(255, 255, 255, 0.445) !important
 }
 
 /* Card */
@@ -167,5 +219,50 @@ a.nav-link-custom:hover {
 
 .view-all-btn:hover {
     background-color: #333;
-    /* Colore leggermente più chiaro al passaggio del mouse */
+}
+
+/* Sezione Rows Table */
+
+.grid-header {
+    color: white;
+    font-weight: bold;
+    background-color: #1f1f1f;
+    padding: 15px;
+    border: 15px solid #181818;
+    border-bottom: none;
+    border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.grid-row {
+    color: white;
+    background-color: #1f1f1f;
+    padding: 15px;
+    border: 15px solid #181818;
+    border-top: none;
+    border-radius: 0 0 0.5rem 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.heart-icon {
+    color: #fc4eca;
+    cursor: pointer;
+}
+
+.btn-outline-light {
+    border-color: #fc4eca;
+    color: #fc4eca;
+}
+
+.btn-outline-light:hover {
+    background-color: #fc4eca;
+    color: #fff;
+}
+
+@media (max-width: 767px) {
+
+    .grid-header,
+    .grid-row {
+        font-size: 0.9rem;
+        padding: 10px;
+    }
 }
