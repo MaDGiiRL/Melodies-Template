@@ -12,7 +12,7 @@
             <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-start" id="menu">
                 <h6>Menù</h6>
                 <li class="nav-item">
-                    <a href="#" class="nav-link"><i class="bi bi-house"></i> <span>Home</span></a>
+                    <a href="{{route('index')}}" class="nav-link"><i class="bi bi-house"></i>Home</a>
                 </li>
                 <li>
                     <a href="#" class="nav-link"><i class="bi bi-box-fill"></i> <span>Discover</span></a>

@@ -1,0 +1,1 @@
+<a href="http://localhost:8000/reset-password/71ad44f43b1c846e2867bc6f687b4a366c931e889f04994147ea26704aed49f1">Reset Password</a>

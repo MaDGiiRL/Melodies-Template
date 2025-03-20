@@ -8,9 +8,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Password;
 use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Routing\Controllers\Middleware;
+use Illuminate\Routing\Controllers\HasMiddleware;
 
-class AuthController extends Controller
+class AuthController extends Controller 
 {
+
+
 
     public function redirectToGithub()
     {
@@ -66,9 +70,4 @@ class AuthController extends Controller
         return redirect('/');
     }
 
-    public function account()
-    {
-
-        return view('auth.account');
-    }
 }
