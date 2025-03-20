@@ -72,7 +72,7 @@ class SpotifyService
     // Metodo per ottenere le top canzoni
     public function getTopTracks()
     {
-        $playlistId = 'ID_TOP_TRACKS';
+        $playlistId = '37i9dQZEVXbMDoHDwVN2tF';
         $accessToken = $this->getAccessToken(); // Richiedi il token aggiornato
         $response = Http::withToken($accessToken)
             ->get("https://api.spotify.com/v1/playlists/{$playlistId}");
@@ -88,7 +88,7 @@ class SpotifyService
             ->get("https://api.spotify.com/v1/search", [
                 'q'     => 'Top',
                 'type'  => 'playlist',
-                'limit' => 10,
+                'limit' => 50,
             ]);
 
         return $response->json();

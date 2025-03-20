@@ -4,24 +4,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Playlist;
 use App\Services\SpotifyService;
-use Illuminate\Routing\Controllers\Middleware;
-use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Support\Facades\Http;
 
-class PublicController extends Controller implements HasMiddleware
+class PublicController extends Controller
 {
     protected $spotifyService;
 
-    public static function middleware(): array
-    {
-        return [
-            'verified'
-        ];
-    }
-
     public function __construct(SpotifyService $spotifyService)
     {
-        // Assegniamo il servizio alla proprietà
         $this->spotifyService = $spotifyService;
     }
 
@@ -33,46 +25,62 @@ class PublicController extends Controller implements HasMiddleware
     public function search(Request $request)
     {
         $query = $request->input('query', 'Imagine Dragons');
-        // Utilizza la stessa proprietà spotifyService per effettuare la ricerca
         $results = $this->spotifyService->searchTrack($query);
-
         return view('spotify.search', compact('results'));
     }
 
-    // Vista per le canzoni più ascoltate
     public function topTracks()
     {
         $tracksData = $this->spotifyService->getTopTracks();
         return view('top_tracks', compact('tracksData'));
     }
 
-    // Vista per le playlist più ascoltate
     public function topPlaylists()
     {
         $playlistsData = $this->spotifyService->getTopPlaylists();
         return view('top_playlists', compact('playlistsData'));
     }
 
-    // Vista per la creazione di una playlist
     public function createPlaylist()
     {
         return view('create_playlist');
     }
 
-    // Metodo per salvare la nuova playlist tramite una richiesta POST
     public function storePlaylist(Request $request)
     {
-        // Validazione dei dati
-        $data = $request->validate([
-            'user_id'      => 'required',
-            'user_token'   => 'required',
-            'name'         => 'required|string|max:255',
-            'description'  => 'nullable|string',
-            'public'       => 'nullable|boolean',
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'public' => 'nullable|boolean',
+            'songs' => 'nullable|array',
+            'songs.*.song_name' => 'required_with:songs.*.artist_name|string|max:255',
+            'songs.*.artist_name' => 'required_with:songs.*.song_name|string|max:255',
         ]);
 
-        $result = $this->spotifyService->createPlaylist($data);
+        $playlist = Playlist::create([
+            'name' => $request->name,
+            'description' => $request->description,
+            'public' => $request->public ?? false,
+        ]);
 
-        return redirect()->back()->with('success', 'Playlist creata con successo!');
+        if ($request->has('songs')) {
+            foreach ($request->songs as $song) {
+                $playlist->songs()->create($song);
+            }
+        }
+
+        return redirect()->route('playlists.index')->with('success', 'Playlist creata con successo!');
+    }
+
+    public function showPlaylists()
+    {
+        $playlists = Playlist::all();
+        return view('playlists', compact('playlists'));
+    }
+
+    public function showPlaylist(Playlist $playlist)
+    {
+        $playlist->load('songs'); // Assicuriamoci che carichi le canzoni associate
+        return view('playlists.show', compact('playlist'));
     }
 }
