@@ -2,8 +2,10 @@
     <div class="row justify-content-end">
         <div class="col-12">
             <nav class="navbar navbar-expand-lg navbar-light ">
-                <form class="form-inline my-2 my-lg-0 d-flex flex-row">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search">
+                <!-- Aggiungi action e method al form -->
+                <form class="form-inline my-2 my-lg-0 d-flex flex-row" action="{{ url('/spotify/search') }}" method="GET">
+                    <!-- Aggiungi name="query" all'input -->
+                    <input name="query" class="form-control mr-sm-2" type="search" placeholder="Search">
                 </form>
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                     <ul class="navbar-nav mx-auto mt-2 mt-lg-0 gap-5">

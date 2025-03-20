@@ -14,8 +14,6 @@ use Illuminate\Routing\Controllers\HasMiddleware;
 class AuthController extends Controller 
 {
 
-
-
     public function redirectToGithub()
     {
         return Socialite::driver('github')->redirect();

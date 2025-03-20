@@ -109,7 +109,7 @@
                 <div class="card">
                     <img src="/images/prove/5.png" class="card-img-top p-2">
                     <div class="card-body">
-                        <h6>The lonliest</h6>
+                        <h6>The Lonliest</h6>
                         <p class="card-text small text-white-50">Måneskin</p>
                     </div>
                 </div>
@@ -192,7 +192,7 @@
             <div class="col-md-1 col-lg-1 col-2">
                 <img src="/images/prove/44.png" alt="Cover Album" class="img-fluid">
             </div>
-            <div class="col-md-3 col-lg-3 col-4">Lovin on me</div>
+            <div class="col-md-3 col-lg-3 col-4">Lovin on Me</div>
             <div class="col-4 col-md-2 col-lg-2 my-2 d-none d-md-block d-lg-block">Dec 30, 2023</div>
             <div class="col-md-3 col-lg-3 col-4 d-none d-md-block d-lg-block">Lovin On Me</div>
             <div class="col-md-1 col-lg-1 col-2">3:25</div>
@@ -207,7 +207,7 @@
             <div class="col-md-1 col-lg-1 col-2">
                 <img src="/images/prove/55.png" alt="Cover Album" class="img-fluid">
             </div>
-            <div class="col-md-3 col-lg-3 col-4">paint the town red</div>
+            <div class="col-md-3 col-lg-3 col-4">Paint the Town Red</div>
             <div class="col-4 col-md-2 col-lg-2 my-2 d-none d-md-block d-lg-block">Jan 15, 2024</div>
             <div class="col-md-3 col-lg-3 col-4 d-none d-md-block d-lg-block">Paint The Town Red</div>
             <div class="col-md-1 col-lg-1 col-2 ">3:45</div>

@@ -5,14 +5,13 @@
             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
-            <!-- Inserisci qui il contenuto della sidebar (stesso markup usato per desktop) -->
-            <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+            <a href="{{route('index')}}" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                 <img src="/images/Melodies.png" alt="Logo" class="py-5">
             </a>
             <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-start" id="menu">
                 <h6>Menù</h6>
                 <li class="nav-item">
-                    <a href="{{route('index')}}" class="nav-link"><i class="bi bi-house"></i>Home</a>
+                    <a href="{{route('index')}}" class="nav-link"><i class="bi bi-house"></i> <span>Home</span></a>
                 </li>
                 <li>
                     <a href="#" class="nav-link"><i class="bi bi-box-fill"></i> <span>Discover</span></a>
@@ -26,8 +25,8 @@
                 <hr>
                 <h6>Library</h6>
                 <li>
-                    <a href="#submenu3" data-bs-toggle="collapse" class="nav-link"><i class="bi bi-grid"></i> <span>Categories</span></a>
-                    <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
+                    <a href="#submenu3-desktop" data-bs-toggle="collapse" class="nav-link"><i class="bi bi-grid"></i> <span>Categories</span></a>
+                    <ul class="collapse nav flex-column ms-1" id="submenu3-desktop" data-bs-parent="#menu">
                         <li class="w-100"><a href="#" class="nav-link">Product 1</a></li>
                         <li><a href="#" class="nav-link">Product 2</a></li>
                         <li><a href="#" class="nav-link">Product 3</a></li>
@@ -37,6 +36,10 @@
                 <li>
                     <a href="#" class="nav-link"><i class="bi bi-clock"></i> <span>Recent Added</span></a>
                 </li>
+                <li>
+                    <a href="#" class="nav-link"><i class="bi bi-search"></i> <span>Search</span></a>
+                </li>
+                @auth
                 <hr>
                 <h6>Playlist</h6>
                 <li>
@@ -51,9 +54,9 @@
             </ul>
             <hr>
             <div class="dropdown pb-4">
-                <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="https://github.com/mdo.png" alt="User" width="30" height="30" class="rounded-circle">
-                    <span class="mx-1">Account</span>
+                <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUserDesktop" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="https://i.pinimg.com/1200x/85/5b/2b/855b2b606c64c961da2922a240a43236.jpg" alt="User" width="30" height="30" class="rounded-circle">
+                    <span class="mx-1"> {{ Auth::user()->name }}</span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
                     <li><a class="dropdown-item" href="#">Profile</a></li>
@@ -61,21 +64,27 @@
                     <li>
                         <hr class="dropdown-divider">
                     </li>
-                    <li><a class="dropdown-item" href="#">Log out</a></li>
+                    <li class="d-flex justify-content-center">
+                        <form action="{{ route('logout') }}" method="POST">
+                            @csrf
+                            <button type="submit" class="btn btn-outline-light">Logout</button>
+                        </form>
+                    </li>
                 </ul>
             </div>
+            @endauth
         </div>
     </div>
 
     <!-- Sidebar fissa per Desktop -->
     <div class="sidebar-fixed d-none d-md-block bg-dark-custom text-white p-3">
-        <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+        <a href="{{route('index')}}" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
             <img src="/images/Melodies.png" alt="Logo" class="py-5">
         </a>
         <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-start" id="menu">
             <h6>Menù</h6>
             <li class="nav-item">
-                <a href="#" class="nav-link"><i class="bi bi-house"></i> <span>Home</span></a>
+                <a href="{{route('index')}}" class="nav-link"><i class="bi bi-house"></i> <span>Home</span></a>
             </li>
             <li>
                 <a href="#" class="nav-link"><i class="bi bi-box-fill"></i> <span>Discover</span></a>
@@ -99,6 +108,9 @@
             </li>
             <li>
                 <a href="#" class="nav-link"><i class="bi bi-clock"></i> <span>Recent Added</span></a>
+            </li>
+            <li>
+                <a href="{{ url('/spotify/search') }}" class="nav-link"><i class="bi bi-search"></i> <span>Search</span></a>
             </li>
             @auth
             <hr>
@@ -142,6 +154,5 @@
             <button class="btn btn-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar" aria-controls="mobileSidebar">
                 <i class="bi bi-list"></i>
             </button>
-            <a class="navbar-brand" href="#">Logo</a>
         </div>
     </nav>
