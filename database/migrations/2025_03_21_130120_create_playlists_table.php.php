@@ -13,10 +13,8 @@ return new class extends Migration
     {
         Schema::create('playlists', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('description')->nullable();
-            $table->boolean('public')->default(true);
-            $table->string('spotify_playlist_id')->nullable(); // ID della playlist su Spotify
+            $table->string('name'); // Nome della playlist
+            $table->json('artists')->nullable(); // Salveremo gli artisti come JSON
             $table->timestamps();
         });
     }

@@ -14,3 +14,4 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/spotify/search', [PublicController::class, 'search']);
 Route::get('/top-playlists', [PublicController::class, 'topPlaylists'])->name('top.playlists');
 Route::get('/spotify/create', [PublicController::class, 'create'])->name('spotify.create');
+Route::get('/spotify/show', [PublicController::class, 'show'])->name('spotify.show');

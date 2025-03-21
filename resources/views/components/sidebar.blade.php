@@ -42,7 +42,7 @@
                     <a href="{{route('spotify.create')}}" class="nav-link"><i class="bi bi-folder-plus"></i> <span>Create Playlist</span></a>
                 </li>
                 <li>
-                    <a href="" class="nav-link"><i class="bi bi-suit-heart-fill"></i> <span>Your Playlists</span></a>
+                    <a href="{{route('spotify.show')}}" class="nav-link"><i class="bi bi-suit-heart-fill"></i> <span>Your Playlists</span></a>
                 </li>
             </ul>
             <hr>
@@ -108,7 +108,7 @@
                 <a href="{{route('spotify.create')}}" class="nav-link"><i class="bi bi-folder-plus"></i> <span>Create Playlist</span></a>
             </li>
             <li>
-                <a href="" class="nav-link"><i class="bi bi-suit-heart-fill"></i> <span>Your Playlists</span></a>
+                <a href="{{route('spotify.show')}}" class="nav-link"><i class="bi bi-suit-heart-fill"></i> <span>Your Playlists</span></a>
             </li>
         </ul>
         <hr>

@@ -1,28 +1,33 @@
 <div>
-    <form action="" method="POST" enctype="multipart/form-data">
-        @csrf
-
-        <div class="form-group">
-            <label for="name">Artist</label>
-            <input type="text" class="form-control" name="name" required>
+    <form wire:submit.prevent="save" enctype="multipart/form-data">
+        <!-- Nome Playlist -->
+        <div class="my-3">
+            <label class="form-label">Nome Playlist</label>
+            <input type="text" class="form-control" wire:model="name">
         </div>
 
-        <div class="form-group">
-            <label for="spotify_url">Song</label>
-            <input type="text" class="form-control" name="song" required>
+        <!-- Contenitore per gli artisti -->
+        <div id="artists-container">
+            @foreach($artists as $index => $artist)
+            <div class="artist-block d-flex flex-wrap align-items-center bg-light p-3 mb-2 rounded" wire:key="artist-{{ $index }}">
+                <input type="text" class="form-control me-2 small-input" wire:model="artists.{{ $index }}.name" placeholder="Artista">
+                <input type="text" class="form-control me-2 small-input" wire:model="artists.{{ $index }}.song" placeholder="Canzone">
+                <input type="file" class="form-control me-2 small-input" wire:model="artists.{{ $index }}.url_cover">
+                <input type="text" class="form-control me-2 small-input" wire:model="artists.{{ $index }}.url_song" placeholder="URL Canzone">
+                <button type="button" class="btn btn-danger" wire:click="removeArtist({{ $index }})">✖</button>
+            </div>
+            @endforeach
         </div>
 
-        <div class="form-group">
-            <label for="image_url">Cover</label>
-            <input type="url" class="form-control" name="url_cover">
-        </div>
+        <!-- Pulsante per aggiungere un nuovo artista -->
+        <button type="button" class="btn btn-secondary w-100 my-3" wire:click="addArtist">+ Aggiungi Artista</button>
 
-        <div class="form-group">
-            <label for="followers">URL Song</label>
-            <input type="url" class="form-control" name="url_song">
-        </div>
+        <!-- Pulsante per salvare la playlist -->
+        <button type="submit" class="btn btn-primary w-100">Salva Playlist</button>
 
-        <button type="submit" class="btn btn-light mt-4 w-100">Aggiungi Artista</button>
+        <!-- Messaggio di conferma -->
+        @if (session()->has('message'))
+        <p class="alert alert-success mt-3">{{ session('message') }}</p>
+        @endif
     </form>
-
 </div>

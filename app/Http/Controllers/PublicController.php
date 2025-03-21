@@ -32,6 +32,13 @@ class PublicController extends Controller
         return view('spotify.create');
     }
 
+    public function show()
+    {
+        $playlists = Playlist::all(); // Recupera tutte le playlist dal database
+
+        return view('spotify.show', compact('playlists'));
+    }
+
     public function search(Request $request)
     {
         $query = $request->input('query', 'a');
@@ -45,16 +52,4 @@ class PublicController extends Controller
         return view('top_playlists', compact('playlistsData'));
     }
 
-
-
-    public function redirectToSpotify()
-    {
-        $clientId = config('services.spotify.client_id');
-        $redirectUri = urlencode('http://localhost/callback'); // URL di reindirizzamento
-        $scope = 'user-library-read user-read-playback-state user-modify-playback-state'; // I permessi che chiediamo
-
-        $url = "https://accounts.spotify.com/authorize?client_id={$clientId}&response_type=code&redirect_uri={$redirectUri}&scope={$scope}";
-
-        return redirect($url);
-    }
 }
