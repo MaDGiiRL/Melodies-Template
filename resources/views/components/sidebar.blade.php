@@ -14,7 +14,7 @@
                     <a href="{{route('index')}}" class="nav-link"><i class="bi bi-house"></i> <span>Home</span></a>
                 </li>
                 <li>
-                    <a href="" class="nav-link"><i class="bi bi-star-fill"></i> <span>Premium</span></a>
+                    <a href="{{route('premium')}}" class="nav-link"><i class="bi bi-star-fill"></i> <span>Premium</span></a>
                 </li>
                 <li>
                     <a href="{{route('contacts')}}" class="nav-link"><i class="bi bi-person-lines-fill"></i> <span>Contacts</span></a>
@@ -80,7 +80,7 @@
                 <a href="{{route('index')}}" class="nav-link"><i class="bi bi-house"></i> <span>Home</span></a>
             </li>
             <li>
-                <a href="" class="nav-link"><i class="bi bi-star-fill"></i> <span>Premium</span></a>
+                <a href="{{route('premium')}}" class="nav-link"><i class="bi bi-star-fill"></i> <span>Premium</span></a>
             </li>
             <li>
                 <a href="{{route('contacts')}}" class="nav-link"><i class="bi bi-person-lines-fill"></i> <span>Contacts</span></a>

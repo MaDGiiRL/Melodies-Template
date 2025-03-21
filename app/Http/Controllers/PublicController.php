@@ -32,6 +32,11 @@ class PublicController extends Controller
         return view('spotify.create');
     }
 
+    public function premium()
+    {
+        return view('premium');
+    }
+
     public function show()
     {
         $playlists = Playlist::all();
@@ -51,5 +56,4 @@ class PublicController extends Controller
         $playlistsData = $this->spotifyService->getTopPlaylists();
         return view('top_playlists', compact('playlistsData'));
     }
-
 }

@@ -7,6 +7,7 @@ use App\Http\Controllers\ContactController;
 
 Route::get('/', [PublicController::class, 'index'])->name('index');
 Route::get('/contacts', [PublicController::class, 'contacts'])->name('contacts');
+Route::get('/premium', [PublicController::class, 'premium'])->name('premium');
 
 Route::get('/auth/github', [AuthController::class, 'redirectToGithub'])->name('github.login');
 Route::get('/auth/github/callback', [AuthController::class, 'handleGithubCallback']);
