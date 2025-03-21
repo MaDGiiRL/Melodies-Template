@@ -10,10 +10,10 @@ class PlaylistForm extends Component
 {
     use WithFileUploads;
 
-    public $name; // Nome della playlist
-    public $artists = []; // Array di artisti
+    public $name;
+    public $artists = []; 
 
-    // Avvio con un blocco artista vuoto
+   
     public function mount()
     {
         $this->artists = [
@@ -21,20 +21,19 @@ class PlaylistForm extends Component
         ];
     }
 
-    // Aggiunge un nuovo blocco artista
+  
     public function addArtist()
     {
         $this->artists[] = ['name' => '', 'song' => '', 'url_cover' => null, 'url_song' => ''];
     }
 
-    // Rimuove un blocco artista in base all'indice
     public function removeArtist($index)
     {
         unset($this->artists[$index]);
         $this->artists = array_values($this->artists);
     }
 
-    // Salva la playlist e tutti gli artisti
+
     public function save()
     {
         $this->validate([
@@ -42,15 +41,14 @@ class PlaylistForm extends Component
             'artists.*.name' => 'required|string|max:255',
             'artists.*.song' => 'required|string|max:255',
             'artists.*.url_song' => 'nullable|string|max:255',
-            'artists.*.url_cover' => 'nullable|image|max:10240', // max 10MB per immagine
+            'artists.*.url_cover' => 'nullable|image|max:10240', 
         ]);
 
-        // Prepara i dati degli artisti; se presente il file, lo salva
         $artistsData = [];
         foreach ($this->artists as $artist) {
             $artistData = $artist;
             if (isset($artist['url_cover']) && $artist['url_cover']) {
-                // Salva il file e sostituisce l'oggetto file con il percorso
+                
                 $artistData['url_cover'] = $artist['url_cover']->store('images', 'public');
             }
             $artistsData[] = $artistData;
@@ -62,7 +60,7 @@ class PlaylistForm extends Component
         ]);
 
         $this->reset(['name', 'artists']);
-        $this->mount(); // Ricarica un blocco artista vuoto
+        $this->mount();
 
         session()->flash('message', 'Playlist creata con successo!');
     }

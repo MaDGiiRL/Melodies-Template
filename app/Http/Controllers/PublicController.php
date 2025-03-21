@@ -34,7 +34,7 @@ class PublicController extends Controller
 
     public function show()
     {
-        $playlists = Playlist::all(); // Recupera tutte le playlist dal database
+        $playlists = Playlist::all();
 
         return view('spotify.show', compact('playlists'));
     }

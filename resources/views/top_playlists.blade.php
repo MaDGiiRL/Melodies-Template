@@ -3,7 +3,7 @@
         <h2 class="text-white pb-3">Trending <span class="text-pink">Playlists</span></h2>
 
         <!-- Header della grid -->
-        <div class="row grid-header align-items-center mb-3">
+        <div class="row grid-header align-items-center mb-3 py-3">
             <div class="col-md-1 col-lg-1 col-2">Cover</div>
             <div class="col-md-3 col-lg-3 col-4">Playlist</div>
             <div class="col-md-4 col-lg-4 col-4">Creator</div>

@@ -5,7 +5,7 @@
                 <div class="col-md-6  bg-card text-white p-4 p-md-5">
                     <h3 class="text-center">Contacts Us</h3>
                     <p class="text-center text-white-50">Please enter your name, your email and your message:</p>
-                    <form method="POST" action="">
+                    <form method="POST" action="{{ route('contact.send') }}">
                         @csrf
                         @if ($errors->any())
                         <div class="alert alert-danger">
@@ -31,6 +31,9 @@
                         <div class="my-3 text-center">
                             <button type="submit" class="btn btn-light w-100 fs-5">Send Message</button>
                         </div>
+                        @if (session()->has('message'))
+                        <p class="alert alert-success mt-3">{{ session('message') }}</p>
+                        @endif
                     </form>
                 </div>
             </div>

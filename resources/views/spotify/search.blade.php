@@ -4,14 +4,15 @@
             <div class="col-12">
                 <h1 class="text-white">Search a <span class="text-pink">Song</span></h1>
                 <div class="row">
-                    <div class="col-5">
-                        <form action="{{ url('/spotify/search') }}" method="GET">
-                            <div class="mb-3">
-                                <input type="text" name="query" class="form-control" placeholder="Inserisci il nome dell'artista o del brano" value="{{ request('query') }}">
+                    <div class="col-7 d-flex flex-row mt-4">
+                        <form action="{{ url('/spotify/search') }}" method="GET" class="w-100">
+                            <div class="input-group">
+                                <input type="text" name="query" class="form-control" placeholder="Search a song, an artist or a song" value="{{ request('query') }}">
+                                <button type="submit" class="btn btn-light">Cerca</button>
                             </div>
-                            <button type="submit" class="btn btn-light">Cerca</button>
                         </form>
                     </div>
+
                 </div>
 
             </div>

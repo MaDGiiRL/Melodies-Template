@@ -17,7 +17,7 @@ class ContactMail extends Mailable
      * Create a new message instance.
      */
 
-     public $content;
+    public $content;
 
     public function __construct($_content)
     {
@@ -48,12 +48,10 @@ class ContactMail extends Mailable
     /**
      * Get the attachments for the message.
      *
-     * @return array<int, \Illuminate\Mail\Mailables\Attachment>
+     * @return array<int, 
      */
     public function attachments(): array
     {
-        return [
-
-        ];
+        return [];
     }
 }

@@ -163,6 +163,13 @@ input.form-control {
     background-color: #3b3b3ba2;
     border: 1px solid rgb(19, 19, 19);
     cursor: pointer;
+    color: white;
+}
+
+textarea.form-control {
+    background-color: #3b3b3ba2;
+    border: 1px solid rgb(19, 19, 19);
+    color: white;
 }
 
 ::placeholder {
@@ -240,10 +247,8 @@ input.form-control {
     color: white;
     font-weight: bold;
     background-color: #1f1f1f;
-    padding: 15px;
     border: 15px solid #181818;
     border-bottom: none;
-    border-radius: 0.5rem 0.5rem 0 0;
 }
 
 .grid-row {
@@ -252,8 +257,6 @@ input.form-control {
     padding: 15px;
     border: 15px solid #181818;
     border-top: none;
-    border-radius: 0 0 0.5rem 0.5rem;
-    margin-bottom: 1rem;
 }
 
 .heart-icon {
